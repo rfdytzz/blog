@@ -63,4 +63,19 @@ class PostController extends Controller
         $data = Post::FindOrFail($id);
         return view('detail', compact('user', 'data'));
     }
+
+    public function author($id) {
+        $user = Auth::user();
+        $author = User::findOrFail($id);
+        $data = Post::with('user')->get();
+        return view('author', compact('user', 'data', 'author'));
+    }
+
+    public function myblog($id) {
+        $user = Auth::user();
+        $author = User::findOrFail($id);
+        $data = Post::with('user')->get();
+
+        return view('myblog', compact('user', 'data', 'author'));
+    }
 }

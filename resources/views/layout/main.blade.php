@@ -28,7 +28,7 @@
                             class="rounded-md py-2 px-3 hover:bg-gray-700 transition duration-200 {{ request()->routeIs('blog') ? 'bg-gray-900' : '' }}">
                             Blog</li>
                     </a>
-                    <a href="/profile/blog">
+                    <a href="{{ route('myblog', $user->id) }}">
                         <li
                             class="rounded-md py-2 px-3 hover:bg-gray-700 transition duration-200 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
                             MyBlog</li>
@@ -94,7 +94,7 @@
                         class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('blog') ? 'bg-gray-900' : '' }}">
                         Blog</li>
                 </a>
-                <a href="/profile/blog">
+                <a href="{{ route('myblog', $user->id) }}">
                     <li
                         class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
                         MyBlog</li>
