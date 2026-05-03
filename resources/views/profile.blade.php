@@ -25,7 +25,7 @@
                     <a href=""
                         class="hover:bg-gray-100 {{ request()->routeIs('profile') ? 'bg-gray-100' : '' }} rounded p-3 flex-1 transition duration-200">Account
                         Information</a>
-                    <a href=""
+                    <a href="/profile/change-password"
                         class="hover:bg-gray-100 {{ request()->routeIs('change_password') ? 'bg-gray-100' : '' }} rounded p-3 flex-1 transition duration-200">Change
                         Password</a>
                 </ul>
