@@ -14,42 +14,40 @@
         <div class="flex flex-col px-15 py-7 justify-center w-full">
             <a href="/blog/create"
                 class="flex rounded w-full hover:bg-blue-400 transition duration-200 bg-blue-500 p-3 justify-center text-[20px] text-white font-medium">Create
-                Your Blog</a>
+                Your Post</a>
         </div>
     @endauth
 
     <form action="{{ route('blog') }}" method="GET" class="flex flex-col">
-        <div class="grid grid-cols-8 px-5 md:px:10 lg:px-15 py-7 justify-center w-full gap-5">
+        <div class="flex justify-center flex-col md:flex-row lg:flex-row w-full px-15 gap-4">
             <div
-                class="flex col-span-8 flex-1 items-center focus-within:outline-2 focus-within:outline-blue-500 p-3 gap-4 bg-white rounded outline-2 transition duration-200 shadow focus-within:shadow-xl">
+                class="flex focus-within:border-blue-500 focus-within:bg-white transition duration-200 shadow focus-within:shadow-xl items-center rounded w-full border-2 p-3 gap-3 border-gray-300">
                 <i class='bx bx-search text-[30px]'></i>
-                <input type="text" class="flex-1 focus:outline-0" placeholder="Search Title or Author" name="search"
+                <input type="text" placeholder="Search Title or Author" class="focus:outline-0 flex-1" name="search"
                     id="">
             </div>
-            <div class="flex gap-5">
+            <div class="flex gap-4">
+                <a href="{{ url()->current() }}">
+                    <div
+                        class="flex items-center w-fit bg-white border-2 transition duration-200 border-gray-300 rounded shadow hover:shadow-xl cursor-pointer p-3">
+                        <i class='bx bx-refresh text-[30px]'></i>
+                    </div>
+                </a>
                 <div
-                    class="focus-within:outline-blue-500 w-fit items-center flex outline-2 px-3 shadow focus-within:shadow-xl transition duration-200 rounded bg-white">
-                    <select name="filter" id="" class="text-[20px] focus:outline-0">
+                    class="flex items-center w-fit bg-white border-2 transition duration-200 border-gray-300 rounded shadow hover:shadow-xl cursor-pointer p-3">
+                    <select name="filter" id="" class="focus:outline-0">
                         <option value="">All</option>
                         <option value="article">Article</option>
                         <option value="story">Story</option>
                     </select>
                 </div>
-                <button type="submit"
-                    class="bg-green-400 transition duration-200 border-2 border-gray-900 cursor-pointer hover:bg-green-500 items-center flex px-5 rounded text-white text-[20px]">
+                <button
+                    class="flex-1 flex justify-center items-center w-fit bg-blue-500 text-white border-2 transition duration-200 border-gray-300 rounded shadow hover:shadow-xl cursor-pointer p-3">
                     Filter
                 </button>
-                <div class="hidden md:block lg:block">
-                    <a href="{{ url()->current() }}"
-                        class="bg-white w-fit hover:outline-blue-500 p-3 shadow hover:shadow-xl transition duration-200 flex items-center rounded outline-2">
-                        <i class='bx bx-refresh text-[40px]'></i>
-                    </a>
-                </div>
             </div>
         </div>
-        <div class="text-end mr-15">
-            <p class="italic">*Enter or Filter to Search</p>
-        </div>
+        <p class="italic px-16 text-gray-600 py-2">*Enter to search and filter</p>
     </form>
 
 
@@ -68,10 +66,12 @@
                     </div>
 
                     <div class="flex justify-between items-end mt-auto pt-8">
-                        <a href="{{ route('author', $item->user->id) }}" class="hover:text-blue-800 hover:border-b-2 hover:border-blue-500 transition duration-200 text-sm font-medium">
+                        <a href="{{ route('author', $item->user->id) }}"
+                            class="hover:text-blue-800 hover:border-b-2 hover:border-blue-500 transition duration-200 text-sm font-medium">
                             {{ $item->user->name }}
                         </a>
-                        <a href="/blog/detail/{{ $item->id }}" class="flex items-center gap-1 hover:text-blue-800 transition duration-200">
+                        <a href="/blog/detail/{{ $item->id }}"
+                            class="flex items-center gap-1 hover:text-blue-800 transition duration-200">
                             <p>Read more</p>
                             <i class='bx bx-right-arrow-alt mt-1'></i>
                         </a>

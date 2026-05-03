@@ -24,22 +24,22 @@
             <form id="form" action="{{ route('register') }}" method="POST" class="mt-8 flex flex-col gap-5 px-5">
                 @csrf
                 <div
-                    class="flex rounded focus-within:outline-2 focus-within:outline-gray-900 focus-within:shadow-xl outline-2 outline-gray-500 transition duration-200 items-center p-2 gap-2">
+                     class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <i class='bx bx-user text-[30px]'></i>
                     <input type="text" name="name" placeholder="Name" class="w-full focus:outline-0">
                 </div>
                 <div
-                    class="flex rounded focus-within:outline-2 focus-within:outline-gray-900 focus-within:shadow-xl outline-2 outline-gray-500 transition duration-200 items-center p-2 gap-2">
+                     class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <i class='bx bx-envelope text-[30px]'></i>
                     <input type="text" name="email" placeholder="Email" class="w-full focus:outline-0">
                 </div>
                 <div
-                    class="flex rounded focus-within:outline-2 focus-within:outline-gray-900 focus-within:shadow-xl outline-2 outline-gray-500 transition duration-200 items-center p-2 gap-2">
+                    class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <i class='bx bx-phone text-[30px]'></i>
                     <input type="tel" name="phone_number" placeholder="Phone Number" class="w-full focus:outline-0">
                 </div>
                 <div
-                    class="flex rounded focus-within:outline-2 focus-within:outline-gray-900 focus-within:shadow-xl outline-2 outline-gray-500 transition duration-200 items-center p-2 gap-2">
+                    class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <i class='bx bx-male-sign text-[30px]'></i>
                     <select name="gender" class="focus:outline-0 w-full">
                         <option selected>Select Gender</option>
@@ -48,13 +48,13 @@
                     </select>
                 </div>
                 <div
-                    class="flex rounded focus-within:outline-2 focus-within:outline-gray-900 focus-within:shadow-xl outline-2 outline-gray-500 transition duration-200 items-center p-2 gap-2">
+                    class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <i class='bx bx-calendar text-[30px]'></i>
                     <input type="date" name="birthdate" class="w-full focus:outline-0">
                 </div>
                 <hr>
                 <div
-                    class="flex justify-between rounded focus-within:outline-2 focus-within:outline-gray-900 focus-within:shadow-xl outline-2 outline-gray-500 transition duration-200 items-center p-2 gap-2">
+                  class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <div class="flex gap-2 w-full">
                         <i class='bx bx-lock-alt text-[30px]'></i>
                         <input id="password" minlength="8" name="password" type="password" placeholder="Password"

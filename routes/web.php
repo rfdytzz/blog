@@ -45,3 +45,6 @@ Route::get('/blog', [PostController::class, 'blog'])->name('blog');
 Route::get('/blog/detail/{id}', [PostController::class, 'blog_detail'])->name('detail');
 Route::get('/blog/author/{id}', [PostController::class, 'author'])->name('author');
 Route::get('/profile/blog/{id}', [PostController::class, 'myblog'])->name('myblog');
+
+// Post Func
+Route::post('/deletepost', [PostController::class, 'destroy'])->name('delete');

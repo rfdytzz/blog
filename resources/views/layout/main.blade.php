@@ -28,11 +28,13 @@
                             class="rounded-md py-2 px-3 hover:bg-gray-700 transition duration-200 {{ request()->routeIs('blog') ? 'bg-gray-900' : '' }}">
                             Blog</li>
                     </a>
-                    <a href="{{ route('myblog', $user->id) }}">
-                        <li
-                            class="rounded-md py-2 px-3 hover:bg-gray-700 transition duration-200 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
-                            MyBlog</li>
-                    </a>
+                    @auth
+                        <a href="{{ route('myblog', $user->id) }}">
+                            <li
+                                class="rounded-md py-2 px-3 hover:bg-gray-700 transition duration-200 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
+                                MyBlog</li>
+                        </a>
+                    @endauth
                     <a href="/about">
                         <li
                             class="rounded-md py-2 px-3 hover:bg-gray-700 transition duration-200 {{ request()->routeIs('about') ? 'bg-gray-900' : '' }}">
@@ -76,7 +78,7 @@
     <div id="overlay" onclick="openSidebar()" class="bg-black/60 inset-0 z-20 fixed hidden"></div>
 
     <div id="sidebar"
-        class="transition shadow-2xl p-5 duration-200 h-screen w-60 bg-gray-800 fixed z-30 top-0 left-0 -translate-x-full">
+        class="transition shadow-2xl p-5 duration-200 h-screen w-70 bg-gray-800 fixed z-30 top-0 left-0 -translate-x-full">
         <div class="flex flex-col">
             <div class="flex items-center gap-4">
                 <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
@@ -94,11 +96,13 @@
                         class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('blog') ? 'bg-gray-900' : '' }}">
                         Blog</li>
                 </a>
-                <a href="{{ route('myblog', $user->id) }}">
-                    <li
-                        class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
-                        MyBlog</li>
-                </a>
+                @auth
+                    <a href="{{ route('myblog', $user->id) }}">
+                        <li
+                            class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
+                            MyBlog</li>
+                    </a>
+                @endauth
                 <a href="/about">
                     <li
                         class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('about') ? 'bg-gray-900' : '' }}">

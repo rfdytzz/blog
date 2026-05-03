@@ -24,12 +24,12 @@
             <form id="form" action="{{ route('login.user') }}" method="POST" class="mt-8 flex flex-col gap-5 px-5">
                 @csrf
                 <div
-                    class="flex rounded focus-within:outline-2 focus-within:outline-blue-400 focus-within:shadow-lg focus-within:shadow-blue-300 outline-2 outline-gray-200 transition duration-200 items-center p-2 gap-2">
+                    class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <i class='bx bx-envelope text-[30px]'></i>
-                    <input type="text" name="email" placeholder="Email" class="focus:outline-0 w-full">
+                    <input type="email" name="email" placeholder="Email" class="focus:outline-0 w-full">
                 </div>
                 <div
-                    class="flex justify-between rounded focus-within:outline-blue-400 focus-within:shadow-lg focus-within:shadow-blue-300 outline-2 outline-gray-200 transition duration-200 items-center p-2 gap-2">
+                     class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <div class="flex gap-2 w-full">
                         <i class='bx bx-lock-alt text-[30px]'></i>
                         <input id="password" minlength="8" name="password" type="password" placeholder="Password"

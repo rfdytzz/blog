@@ -34,22 +34,21 @@
                 <div class="flex flex-col gap-6 w-full">
                     <h1 class="text-2xl font-bold text-gray-800">Account Information</h1>
 
-                    <form action="{{ route('update.user', $user->id) }}" class="space-y-8" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('update.user', $user->id) }}" class="space-y-8" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="flex items-center gap-8" x-data="{ photoPreview: null }">
                             <div class="relative">
-                                <img src="{{ asset('storage/' . $user->avatar) }}"
-                                    alt="Profile"
+                                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Profile"
                                     class="size-32 rounded-full object-cover ring-4 ring-gray-50 shadow-sm" />
                             </div>
 
                             <div class="flex flex-col gap-3">
-                                <label
-                                    class="cursor-pointer flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 active:scale-95 transition-all duration-200 px-6 py-2.5 text-white rounded-lg shadow-sm">
-                                    <i class='bx bx-cloud-upload text-xl'></i>
-                                    <span class="text-sm font-semibold">Choose Avatar</span>
-                                    <input type="file" name="avatar" class="hidden" name="avatar" id="avatar">
-                                </label>
+                                <label class="block mb-2.5 text-sm font-medium text-heading" for="file_input">Upload
+                                    Avatar</label>
+                                <input
+                                    class="cursor-pointer p-2 rounded bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body"
+                                    id="file_input" name="avatar" type="file">
                                 <p class="text-[11px] text-gray-400 font-medium uppercase tracking-wider">
                                     JPG, PNG (Max 10MB)
                                 </p>
@@ -66,8 +65,8 @@
                                 </div>
                                 <div class="flex flex-1 flex-col gap-2">
                                     <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Email</label>
-                                    <input type="text" required id="name" name="email" value="{{ $user->email }}" disabled
-                                        placeholder="Your Email"
+                                    <input type="text" required id="name" name="email" value="{{ $user->email }}"
+                                        disabled placeholder="Your Email"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                                 </div>
                             </div>
@@ -80,10 +79,9 @@
                                         class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                                 </div>
                                 <div class="flex flex-1 flex-col gap-2">
-                                    <label for="name" 
-                                        class="text-sm font-semibold text-gray-700 ml-1">Birthdate</label>
-                                    <input type="date" name="birthdate" id="name" required value="{{ $user->birthdate }}"
-                                        placeholder="Your Email"
+                                    <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Birthdate</label>
+                                    <input type="date" name="birthdate" id="name" required
+                                        value="{{ $user->birthdate }}" placeholder="Your Email"
                                         class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                                 </div>
                             </div>
@@ -95,7 +93,8 @@
                                     class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                                     <option>Select Gender</option>
                                     <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male</option>
-                                    <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Female</option>
+                                    <option value="female" {{ $user->gender == 'female' ? 'selected' : '' }}>Female
+                                    </option>
                                 </select>
                             </div>
 

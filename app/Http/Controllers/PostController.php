@@ -71,11 +71,26 @@ class PostController extends Controller
         return view('author', compact('user', 'data', 'author'));
     }
 
-    public function myblog($id) {
+    public function myblog(Request $request, $id) {
         $user = Auth::user();
         $author = User::findOrFail($id);
-        $data = Post::with('user')->get();
+        $query = Post::query()->with('user');
+
+        if ($request->filter) {
+            $query->where('category', $request->filter);
+        }
+
+        if ($request->search) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $data = $query->get();
 
         return view('myblog', compact('user', 'data', 'author'));
+    }
+
+    public function destroy($id) {
+        Post::delete($id);
+        return back()->with('success', 'Your post successfuly Deleted');
     }
 }

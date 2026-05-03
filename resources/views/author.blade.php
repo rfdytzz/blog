@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'About')
+@section('title', $author->name)
 
 @section('content')
 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="py-6 px-5 md:px-10 lg:px-15 min-w-full">
-        <div class="grid grid-cols-1 md:grid-cols-1x lg:grid-cols-1 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
             @foreach ($data as $item)
                 @if ($item->user->name == $author->name)
                     <div class="shadow flex flex-col h-full bg-white p-6 hover:shadow-xl rounded transition duration-200">
@@ -26,10 +26,10 @@
                         </div>
 
                         <div class="flex justify-between items-end mt-auto pt-8">
-                            <a href="{{ route('author', $item->user->id) }}"
+                            <p
                                 class="hover:text-blue-800 hover:border-b-2 hover:border-blue-500 transition duration-200 text-sm font-medium">
                                 {{ $item->user->name }}
-                            </a>
+                            </p>
                             <a href="/blog/detail/{{ $item->id }}"
                                 class="flex items-center gap-1 hover:text-blue-800 transition duration-200">
                                 <p>Read more</p>

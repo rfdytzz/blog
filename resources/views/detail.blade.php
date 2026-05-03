@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Contact')
+@section('title', $data->title)
 
 @section('content')
 
@@ -19,7 +19,7 @@
                 <p class="mt-2">Created at : {{ $data->created_at }}</p>
             </div>
             <p>{{ $data->content }}</p>
-            <a href="/blog" class="p-3 bg-blue-500 rounded w-fit text-white">Back</a>
+            <a href="{{ url()->previous() }}" class="p-3 bg-blue-500 rounded w-fit text-white">Back</a>
         </div>
     </div>
 
