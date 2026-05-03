@@ -64,9 +64,16 @@
                                         class="bg-red-400 hover:bg-red-500 transition duration-200 px-3 text-white rounded py-2 cursor-pointer">Delete
                                         post</button>
                                 </form>
+                                <a href="{{ route('edit', $item->id) }}"
+                                    class="bg-yellow-400 hover:bg-yellow-500 transition duration-200 px-3 text-white rounded py-2 cursor-pointer">Edit
+                                    post</a>
                                 <p class="font-semibold text-sm">{{ ucwords($item->category) }}</p>
                             </div>
-                            <p class="text-gray-500 text-sm">14 days ago</p>
+                            <div class="flex flex-col text-end">
+                                Created at {{ $item->created_at }} |
+                                Updated at {{ $item->updated_at }}
+                                <p>14 days ago</p>
+                            </div>
                         </div>
 
                         <div class="mt-3">

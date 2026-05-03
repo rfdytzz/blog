@@ -64,14 +64,16 @@ class PostController extends Controller
         return view('detail', compact('user', 'data'));
     }
 
-    public function author($id) {
+    public function author($id)
+    {
         $user = Auth::user();
         $author = User::findOrFail($id);
         $data = Post::with('user')->get();
         return view('author', compact('user', 'data', 'author'));
     }
 
-    public function myblog(Request $request, $id) {
+    public function myblog(Request $request, $id)
+    {
         $user = Auth::user();
         $author = User::findOrFail($id);
         $query = Post::query()->with('user');
@@ -84,13 +86,50 @@ class PostController extends Controller
             $query->where('title', 'like', '%' . $request->search . '%');
         }
 
-        $data = $query->get();
+        $data = $query->latest()->get();
+
+        $idCheck = Auth::user()->id;
+
+        if ($idCheck != $id) {
+            abort(403);
+        }
 
         return view('myblog', compact('user', 'data', 'author'));
     }
 
-    public function destroy($id) {
-        Post::delete($id);
-        return back()->with('success', 'Your post successfuly Deleted');
+    public function destroy($id)
+    {
+        // 1. Cari post berdasarkan ID
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return back()->with('success', 'Post berhasil dihapus.');
+    }
+
+    public function edit_post($id) {
+        $user = Auth::User();
+        $data = Post::findOrFail($id);
+
+        $idCheck = Auth::User()->id;
+
+        if ($idCheck != $data->user_id) {
+            abort(403);
+        }
+
+        return view('blog_edit', compact('user', 'data'));
+    }
+
+    public function save_post(Request $request, $id) {
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'category' => 'required',
+            'content' => 'required'
+        ]);
+
+        $post = Post::findOrFail($id);
+
+        $post->update($request->all());
+        return back();
     }
 }

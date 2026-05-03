@@ -10,13 +10,11 @@
         </h1>
     </div>
 
-    @auth
-        <div class="flex flex-col px-15 py-7 justify-center w-full">
-            <a href="/blog/create"
-                class="flex rounded w-full hover:bg-blue-400 transition duration-200 bg-blue-500 p-3 justify-center text-[20px] text-white font-medium">Create
-                Your Post</a>
-        </div>
-    @endauth
+    <div class="flex flex-col px-15 py-7 justify-center w-full">
+        <a href="/blog/create"
+            class="flex rounded w-full hover:bg-blue-400 transition duration-200 bg-blue-500 p-3 justify-center text-[20px] text-white font-medium">Create
+            Your Post</a>
+    </div>
 
     <form action="{{ route('blog') }}" method="GET" class="flex flex-col">
         <div class="flex justify-center flex-col md:flex-row lg:flex-row w-full px-15 gap-4">

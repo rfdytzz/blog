@@ -20,15 +20,16 @@ Route::get('/blog', function () {
 })->name('blog');
 
 Route::get('/about', function () {
-    return view('about');
+    $data = Post::with('user')->get();
+    $user = Auth::user();
+    return view('about', compact('data', 'user'));
 })->name('about');
 
 Route::get('/contact', function () {
-    return view('contact');
+    $data = Post::with('user')->get();
+    $user = Auth::user();
+    return view('contact', compact('data', 'user'));
 })->name('contact');
-
-// User Page
-Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
 // Auth Func
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
@@ -36,15 +37,22 @@ Route::get('/register', [AuthController::class, 'registerPage']);
 Route::post('/login', [AuthController::class, 'login'])->name('login.user');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/update/{id}', [AuthController::class, 'update_user'])->name('update.user');
-Route::post('/blog/create', [PostController::class, 'create_post'])->name('post.create');
+
 
 // Post
-Route::get('/blog/create', [PostController::class, 'create'])->name('create');
 Route::get('/blog', [PostController::class, 'blog'])->name('blog');
 Route::get('/blog/detail/{id}', [PostController::class, 'blog_detail'])->name('detail');
 Route::get('/blog/author/{id}', [PostController::class, 'author'])->name('author');
-Route::get('/profile/blog/{id}', [PostController::class, 'myblog'])->name('myblog');
 
 // Post Func
-Route::post('/deletepost', [PostController::class, 'destroy'])->name('delete');
+Route::delete('/deletepost/{id}', [PostController::class, 'destroy'])->name('delete');
+
+Route::middleware('auth', 'Check_Role:user')->group(function () {
+    Route::post('/blog/create', [PostController::class, 'create_post'])->name('post.create');
+    Route::get('/blog/create', [PostController::class, 'create'])->name('create');
+    Route::get('/profile/blog/{id}', [PostController::class, 'myblog'])->name('myblog');
+    Route::post('/update/{id}', [AuthController::class, 'update_user'])->name('update.user');
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::get('/profile/blog/edit/{id}', [PostController::class, 'edit_post'])->name('edit');
+    Route::post('/profile/blog/edit/{id}', [PostController::class, 'save_post'])->name('save.post');
+});

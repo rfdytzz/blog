@@ -5,7 +5,8 @@
 @section('content')
 
     <div class="w-full h-screen flex justify-center items-center">
-        <div class="lg:shadow-xl md:shadow-xl shadow-none  px-5 py-10 focus-within:shadow-none md:focus-within:shadow-2xl lg:focus-within:shadow-2xl  transition duration-200">
+        <div
+            class="lg:shadow-xl md:shadow-xl shadow-none  px-5 py-10 focus-within:shadow-none md:focus-within:shadow-2xl lg:focus-within:shadow-2xl  transition duration-200">
             <div class="font-bold w-full md:w-100 lg:w-100 text-[45px] text-center">Login</div>
             @if (session('failed'))
                 <div id="session"
@@ -29,7 +30,7 @@
                     <input type="email" name="email" placeholder="Email" class="focus:outline-0 w-full">
                 </div>
                 <div
-                     class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
+                    class="flex p-3 gap-2 border-2 border-gray-300 rounded shadow focus-within:shadow-xl transition duration-200 focus-within:border-blue-500">
                     <div class="flex gap-2 w-full">
                         <i class='bx bx-lock-alt text-[30px]'></i>
                         <input id="password" minlength="8" name="password" type="password" placeholder="Password"
