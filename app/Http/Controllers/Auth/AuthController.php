@@ -28,7 +28,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            $user = Auth::User();
+            if ($user->role == 'admin') {
+                return redirect()->intended('/dashboard');
+            }
             return redirect()->intended('/');
         }
 
@@ -102,5 +105,11 @@ class AuthController extends Controller
         }
 
         return back()->with('success', 'Your Account Updated');
+    }
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+        return view('dashboard', compact('user'));
     }
 }

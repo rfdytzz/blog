@@ -70,7 +70,7 @@
                 <div class="shadow flex flex-col h-full bg-white p-6 hover:shadow-xl rounded transition duration-200">
                     <div class="flex justify-between">
                         <p class="font-semibold text-sm">{{ ucwords($item->category) }}</p>
-                        <p class="text-gray-500 text-sm">14 days ago</p>
+                        <p class="text-gray-500 text-sm">{{ $item->created_at->diffForHumans() }}</p>
                     </div>
 
                     <div class="mt-3">

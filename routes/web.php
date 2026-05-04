@@ -59,3 +59,7 @@ Route::middleware('auth', 'Check_Role:user')->group(function () {
     Route::get('/profile/blog/edit/{id}', [PostController::class, 'edit_post'])->name('edit');
     Route::post('/profile/blog/edit/{id}', [PostController::class, 'save_post'])->name('save.post');
 });
+
+Route::middleware('auth', 'Check_Role:admin')->group( function() {
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+});

@@ -89,7 +89,7 @@
                             <div class="flex flex-col text-end">
                                 Created at {{ $item->created_at }} WIB |
                                 Updated at {{ $item->updated_at }} WIB
-                                <p>14 days ago</p>
+                                <p class="text-gray-500 text-sm">{{ $item->created_at->diffForHumans() }}</p>
                             </div>
                         </div>
 
