@@ -46,8 +46,23 @@
             </div>
         </div>
         <p class="italic px-16 text-gray-600 py-2">*Enter to search and filter</p>
+        <div class="px-4">
+            @if (session('success'))
+                <div id="session"
+                    class="bg-green-500/20 rounded items-center border-2 p-3 text-green-500 flex justify-between border-green-500">
+                    {{ session('success') }}
+                    <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
+                </div>
+            @endif
+            @if (session('failed'))
+                <div id="session"
+                    class="bg-red-500/20 rounded items-center border-2 p-3 text-red-500 flex justify-between border-red-500">
+                    {{ session('failed') }}
+                    <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
+                </div>
+            @endif
+        </div>
     </form>
-
 
     <div class="py-6 px-5 md:px-10 lg:px-15 min-w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
@@ -78,5 +93,13 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        function closeSession() {
+            const session = document.getElementById('session');
+
+            session.classList.add('hidden');
+        }
+    </script>
 
 @endsection

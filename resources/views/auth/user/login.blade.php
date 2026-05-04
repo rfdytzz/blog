@@ -8,20 +8,22 @@
         <div
             class="lg:shadow-xl md:shadow-xl shadow-none  px-5 py-10 focus-within:shadow-none md:focus-within:shadow-2xl lg:focus-within:shadow-2xl  transition duration-200">
             <div class="font-bold w-full md:w-100 lg:w-100 text-[45px] text-center">Login</div>
-            @if (session('failed'))
-                <div id="session"
-                    class="mt-8 bg-red-500 flex justify-between items-center p-4 rounded mx-5 text-white mb-4">
-                    {{ session('failed') }}
-                    <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
-                </div>
-            @endif
-            @if (session('success'))
-                <div id="session"
-                    class="mt-8 bg-green-500 flex justify-between items-center p-4 rounded mx-5 text-white mb-4">
-                    {{ session('success') }}
-                    <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
-                </div>
-            @endif
+            <div class="px-5 mt-3">
+                @if (session('success'))
+                    <div id="session"
+                        class="bg-green-500/20 rounded items-center border-2 p-3 text-green-500 flex justify-between border-green-500">
+                        {{ session('success') }}
+                        <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
+                    </div>
+                @endif
+                @if (session('failed'))
+                    <div id="session"
+                        class="bg-red-500/20 rounded items-center border-2 p-3 text-red-500 flex justify-between border-red-500">
+                        {{ session('failed') }}
+                        <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
+                    </div>
+                @endif
+            </div>
             <form id="form" action="{{ route('login.user') }}" method="POST" class="mt-8 flex flex-col gap-5 px-5">
                 @csrf
                 <div

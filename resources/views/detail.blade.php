@@ -16,7 +16,7 @@
                 <p>Author : {{ $data->user->name }}</p>
                 <h1 class="font-bold text-[40px]">{{ $data->title }}</h1>
                 <p class="text-gray-600">{{ ucwords($data->category) }} | {{ $data->subtitle }}</p>
-                <p class="mt-2">Created at : {{ $data->created_at }}</p>
+                <p class="mt-2">Created at : {{ $data->created_at }} WIB</p>
             </div>
             <p>{{ $data->content }}</p>
             <a href="{{ url()->previous() }}" class="p-3 bg-blue-500 rounded w-fit text-white">Back</a>

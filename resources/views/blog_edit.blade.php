@@ -14,20 +14,38 @@
         <div class="flex flex-col gap-6 w-300">
             <h1 class="text-[30px] font-bold text-gray-800">Post Editor</h1>
 
-            <form action="{{ route('save.post', $data->id) }}" class="space-y-8" method="POST" enctype="multipart/form-data">
+            @if (session('success'))
+                <div id="session"
+                    class="bg-green-500/20 rounded items-center border-2 p-3 text-green-500 flex justify-between border-green-500">
+                    {{ session('success') }}
+                    <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
+                </div>
+            @endif
+            @if (session('failed'))
+                <div id="session"
+                    class="bg-red-500/20 rounded items-center border-2 p-3 text-red-500 flex justify-between border-red-500">
+                    {{ session('failed') }}
+                    <i class='bx bx-x text-[20px] cursor-pointer' onclick="closeSession()"></i>
+                </div>
+            @endif
+
+            <form action="{{ route('save.post', $data->id) }}" class="space-y-8" method="POST"
+                enctype="multipart/form-data">
                 @csrf
 
                 <div class="grid gap-6">
                     <div class="flex flex-1 flex-col gap-2">
                         <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Post Title</label>
-                        <input type="text" id="name" value="{{ old('title', $data->title) }}" required name="title" placeholder="Title"
+                        <input type="text" id="name" value="{{ old('title', $data->title) }}" required
+                            name="title" placeholder="Title"
                             class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                     </div>
                     <div class="flex gap-5">
                         <div class="flex flex-1 flex-col gap-2">
                             <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Sub Title
                                 (nullable)</label>
-                            <input type="text" id="name" value="{{ old('subtitle', $data->subtitle) }}" required name="subtitle" placeholder="Sub Title"
+                            <input type="text" id="name" value="{{ old('subtitle', $data->subtitle) }}" required
+                                name="subtitle" placeholder="Sub Title"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                         </div>
                         <div class="flex flex-1 flex-col gap-2">
@@ -36,15 +54,16 @@
                             <select id="name" required name="category"
                                 class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                                 <option>Select Category</option>
-                                <option value="article" {{$data->category == 'article' ? 'selected' : '' }}>Article</option>
-                                <option value="story" {{$data->category == 'story' ? 'selected' : '' }}>Story</option>
+                                <option value="article" {{ $data->category == 'article' ? 'selected' : '' }}>Article
+                                </option>
+                                <option value="story" {{ $data->category == 'story' ? 'selected' : '' }}>Story</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="flex flex-1 flex-col gap-2">
                         <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Content</label>
-                        <textarea 
+                        <textarea
                             class="w-full p-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400"
                             name="content" id="" cols="30" rows="10">{{ $data->content }}</textarea>
                     </div>
@@ -57,5 +76,13 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function closeSession() {
+            const session = document.getElementById('session');
+
+            session.classList.add('hidden');
+        }
+    </script>
 
 @endsection

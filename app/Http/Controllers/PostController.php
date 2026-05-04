@@ -99,7 +99,6 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        // 1. Cari post berdasarkan ID
         $post = Post::findOrFail($id);
         $post->delete();
 
@@ -130,6 +129,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
 
         $post->update($request->all());
-        return back();
+        return back()->with('success'. 'Your Post has been Successfuly updated');
     }
 }
