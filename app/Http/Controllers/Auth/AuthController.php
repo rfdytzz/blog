@@ -113,11 +113,19 @@ class AuthController extends Controller
         $user = Auth::user();
         return view('dashboard', compact('user'));
     }
-    public function alluser()
+    public function alluser(Request $request)
     {
         $user = Auth::user();
-        $data = User::where('role', 'user')->get();
+        $query = User::query()->where('role', 'user');
         $post = Post::with('user')->get();
+
+        if ($request->search) {
+            $query->where('name', 'like', '%' . $request . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
+        }
+
+        $data = $query->get();
+
         return view('alluser', compact('user', 'data', 'post'));
     }
 }
