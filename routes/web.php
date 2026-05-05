@@ -62,4 +62,5 @@ Route::middleware('auth', 'Check_Role:user')->group(function () {
 
 Route::middleware('auth', 'Check_Role:admin')->group( function() {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/alluser', [AuthController::class, 'alluser'])->name('allusers');
 });

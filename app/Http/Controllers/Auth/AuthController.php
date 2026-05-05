@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -111,5 +112,12 @@ class AuthController extends Controller
     {
         $user = Auth::user();
         return view('dashboard', compact('user'));
+    }
+    public function alluser()
+    {
+        $user = Auth::user();
+        $data = User::where('role', 'user')->get();
+        $post = Post::with('user')->get();
+        return view('alluser', compact('user', 'data', 'post'));
     }
 }
