@@ -12,6 +12,7 @@ class PostController extends Controller
     public function create()
     {
         $user = Auth::user();
+
         return view('create', compact('user'));
     }
 
@@ -25,8 +26,8 @@ class PostController extends Controller
         }
 
         if ($request->search) {
-            $query->where('title', 'like', '%' . $request->search . '%')
-                ->orWhereRelation('user', 'name', 'like', '%' . $request->search . '%');
+            $query->where('title', 'like', '%'.$request->search.'%')
+                ->orWhereRelation('user', 'name', 'like', '%'.$request->search.'%');
         }
 
         $data = $query->latest()->get();
@@ -38,20 +39,26 @@ class PostController extends Controller
     {
 
         $request->validate([
+            'thumbnail' => 'required|image|mimes:png,jpg,jpeg',
             'title' => 'required',
             'subtitle' => 'required',
             'category' => 'required',
-            'content' => 'required'
+            'content' => 'required',
         ]);
 
         $user = Auth::id();
+
+        if ($request->hasFile('thumbnail')) {
+            $path = $request->file('thumbnail')->store('thumbnail', 'public');
+        }
 
         Post::create([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'category' => $request->category,
             'content' => $request->content,
-            'user_id' => $user
+            'user_id' => $user,
+            'thumbnail' => $path,
         ]);
 
         return redirect('/blog')->with('success', 'Your blog Added');
@@ -61,6 +68,7 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $data = Post::FindOrFail($id);
+
         return view('detail', compact('user', 'data'));
     }
 
@@ -69,6 +77,7 @@ class PostController extends Controller
         $user = Auth::user();
         $author = User::findOrFail($id);
         $data = Post::with('user')->get();
+
         return view('author', compact('user', 'data', 'author'));
     }
 
@@ -83,7 +92,7 @@ class PostController extends Controller
         }
 
         if ($request->search) {
-            $query->where('title', 'like', '%' . $request->search . '%');
+            $query->where('title', 'like', '%'.$request->search.'%');
         }
 
         $data = $query->latest()->get();
@@ -105,7 +114,8 @@ class PostController extends Controller
         return back()->with('success', 'Post berhasil dihapus.');
     }
 
-    public function edit_post($id) {
+    public function edit_post($id)
+    {
         $user = Auth::User();
         $data = Post::findOrFail($id);
 
@@ -118,17 +128,19 @@ class PostController extends Controller
         return view('blog_edit', compact('user', 'data'));
     }
 
-    public function save_post(Request $request, $id) {
+    public function save_post(Request $request, $id)
+    {
         $request->validate([
             'title' => 'required',
             'subtitle' => 'required',
             'category' => 'required',
-            'content' => 'required'
+            'content' => 'required',
         ]);
 
         $post = Post::findOrFail($id);
 
         $post->update($request->all());
-        return back()->with('success'. 'Your Post has been Successfuly updated');
+
+        return back()->with('success'.'Your Post has been Successfuly updated');
     }
 }

@@ -47,7 +47,7 @@
                                 <label class="block mb-2.5 text-sm font-medium text-heading" for="file_input">Upload
                                     Avatar</label>
                                 <input
-                                    class="cursor-pointer p-2 rounded bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body"
+                                    class="cursor-pointer p-2 focus:outline-0 rounded bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body"
                                     id="file_input" name="avatar" type="file">
                                 <p class="text-[11px] text-gray-400 font-medium uppercase tracking-wider">
                                     JPG, PNG (Max 10MB)

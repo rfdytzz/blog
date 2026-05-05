@@ -18,6 +18,9 @@
                 <p class="text-gray-600">{{ ucwords($data->category) }} | {{ $data->subtitle }}</p>
                 <p class="mt-2">Created at : {{ $data->created_at }} WIB</p>
             </div>
+            <div class="w-full flex justify-center">
+                <img src="{{ asset('storage/' . $data->thumbnail ) }}" alt="" class="w-200 border-2 rounded shadow hover:shadow-xl transition duration-200 border-blue-500 ">
+            </div>
             <p>{{ $data->content }}</p>
             <a href="{{ url()->previous() }}" class="p-3 bg-blue-500 rounded w-fit text-white">Back</a>
         </div>

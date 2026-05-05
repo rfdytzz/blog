@@ -4,10 +4,20 @@
 
 @section('content')
 
-    <div class="w-full bg-white h-20 shadow items-center flex px-10">
-        <h1 class="font-medium text-[36px]">
-            {{ $author->name }}
-        </h1>
+    <div class="w-full h-fit bg-white shadow items-center flex px-15 justify-between">
+        <div class="flex gap-4 items-center py-5">
+            <img src="{{ asset('storage/' . $author->avatar) }}" class="size-20 rounded-full" alt="">
+            <h1 class="font-medium text-[36px]">
+                {{ $author->name }}
+            </h1>
+        </div>
+        <div class="flex flex-col gap-2 ">
+            <p class="text-end">Share this Profile</p>
+            <div class="flex gap-3">
+                <a href="https://whatsapp.com" class="flex items-center gap-2 bg-green-500 text-white p-2 rounded"><i class='bx bxl-whatsapp text-[25px] mt-1'></i> WhatsApp</a>
+                <a href="https://whatsapp.com" class="flex items-center gap-2 bg-blue-500 text-white p-2 rounded"><i class='bx bxl-facebook text-[25px] mt-1'></i> Facebook</a>
+            </div>
+        </div>
     </div>
 
     <div class="py-6 px-5 md:px-10 lg:px-15 min-w-full">
@@ -17,7 +27,7 @@
                     <div class="shadow flex flex-col h-full bg-white p-6 hover:shadow-xl rounded transition duration-200">
                         <div class="flex justify-between">
                             <p class="font-semibold text-sm">{{ ucwords($item->category) }}</p>
-                            <p class="text-gray-500 text-sm">14 days ago</p>
+                            <p class="text-gray-500 text-sm">{{ $item->created_at->diffForHumans() }}</p>
                         </div>
 
                         <div class="mt-3">
