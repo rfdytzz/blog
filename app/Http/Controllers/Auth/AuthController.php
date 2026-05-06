@@ -145,7 +145,7 @@ class AuthController extends Controller
                     ->orWhere('email', 'like', '%' . $request->search . '%');
         }
 
-        $data = $query->get();
+        $data = $query->latest()->paginate(10);
 
         return view('alluser', [
             'user' => $user,

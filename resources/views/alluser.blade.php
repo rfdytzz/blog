@@ -40,7 +40,7 @@
     </div>
 
 
-    <div class="mt-10 pb-100">
+    <div class="mt-10 pb-10">
         <div class="my-5">
             <form action="" class="flex gap-2">
                 <div
@@ -55,7 +55,7 @@
                 </a>
             </form>
         </div>
-        <div class="bg-gray-100 overflow-x-auto">
+        <div class="bg-gray-100 overflow-x-auto shadow hover:shadow-2xl transition duration-200">
             <table class="w-full">
                 <thead class="border-2 border-blue-500 bg-blue-200">
                     <tr class="">
@@ -95,6 +95,10 @@
                 @endforeach
             </table>
         </div>
+        <div class="mt-6">
+            {{ $data->links() }}
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -106,7 +110,7 @@
             data: {
                 labels: {!! json_encode($labels) !!},
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'additional User / Day',
                     data: {!! json_encode($total) !!},
                     borderWidth: 1
                 }]
