@@ -9,22 +9,36 @@
         <p>Manage All User</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-4">
-        <div class="bg-red-500 p-5 text-white flex flex-col gap-2">
-            <h3 class="font-bold text-[26px]">Total Users</h3>
-            <p class="text-[30px] px-2 font-bold">{{ $data->count() }}</p>
+    <div class="grid grid-cols-3 mt-10 gap-4">
+        <div class="bg-white rounded shadow p-5 col-span-2 row-span-2 hover:shadow-xl transition duration-200">
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
-        <div class="bg-yellow-500 p-5 text-white flex flex-col gap-2">
-            <h3 class="font-bold text-[26px]">Total Post</h3>
-            <p class="text-[30px] px-2 font-bold">
-                {{ $user->count() }}
-            </p>
+        <div class="bg-white rounded shadow p-5 hover:shadow-xl transition duration-200">
+            <div class="flex items-center gap-2">
+                <div class="p-2">
+                    <i class='bx bx-user text-[26px] rounded-full shadow p-2'></i>
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="font-bold">Total User</h3>
+                    <p>{{ $user->count() }}</p>
+                </div>
+            </div>
         </div>
-        <div class="bg-gray-500 p-5 text-white flex flex-col gap-2">
-            <h3 class="font-bold text-[26px]">Total Users</h3>
-            <p class="text-[30px] px-2 font-bold">{{ $data->count() }}</p>
+        <div class="bg-white rounded shadow p-5 hover:shadow-xl transition duration-200">
+            <div class="flex items-center gap-2">
+                <div class="p-2">
+                    <i class='bx bx-user text-[26px] rounded-full shadow p-2'></i>
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="font-bold">Total User</h3>
+                    <p>{{ $user->count() }}</p>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <div class="mt-10 pb-100">
         <div class="my-5">
@@ -82,5 +96,30 @@
             </table>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($labels) !!},
+                datasets: [{
+                    label: '# of Votes',
+                    data: {!! json_encode($total) !!},
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 30
+                    }
+                }
+            }
+        });
+    </script>
 
 @endsection
