@@ -18,10 +18,12 @@
                     class="w-full sm:w-auto px-8 py-4 bg-lime-600 text-white font-semibold rounded-lg hover:bg-lime-700 transition-colors">
                     Blog
                 </a>
-                <a href="{{ route('myblog', $user->id) }}"
+                @auth
+                                    <a href="{{ route('myblog', $user->id) }}"
                     class="w-full sm:w-auto px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:border-lime-600 hover:text-lime-600 dark:hover:border-lime-400 dark:hover:text-lime-400 transition-colors">
                     My Blog
                 </a>
+                @endauth
             </div>
         </div>
     </section>

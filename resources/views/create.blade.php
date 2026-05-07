@@ -33,7 +33,7 @@
                 @csrf
                 <div class="flex flex-1 flex-col gap-2">
                     <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Post Thumbnail (nullable)</label>
-                    <input type="file" id="thumbnail" required name="thumbnail" placeholder="Title"
+                    <input type="file" id="thumbnail" name="thumbnail" placeholder="Title"
                         class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                 </div>
 
