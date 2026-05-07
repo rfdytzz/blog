@@ -100,4 +100,5 @@ class PostController extends Controller
             'delete' => $post
         ]);
     }
+    
 }
