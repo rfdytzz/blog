@@ -72,7 +72,7 @@
             @foreach ($data as $item)
                 @if ($item->user->name == $author->name)
                     <div class="shadow flex flex-col h-full bg-white p-6 hover:shadow-xl rounded transition duration-200">
-                        <div class="flex justify-between">
+                        <div class="flex flex-col lg:flex-row justify-between">
                             <div class="flex gap-5 items-center">
                                 <form action="{{ route('delete', $item->id) }}" method="POST">
                                     @csrf
@@ -86,8 +86,8 @@
                                     post</a>
                                 <p class="font-semibold text-sm">{{ ucwords($item->category) }}</p>
                             </div>
-                            <div class="flex flex-col text-end">
-                                Created at {{ $item->created_at }} WIB |
+                            <div class="flex flex-col text-start lg:text-end mt-5 lg:mt-0">
+                                Created at {{ $item->created_at }} WIB 
                                 Updated at {{ $item->updated_at }} WIB
                                 <p class="text-gray-500 text-sm">{{ $item->created_at->diffForHumans() }}</p>
                             </div>

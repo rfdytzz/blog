@@ -30,7 +30,7 @@
             </a>
 
         </ul>
-        <div class="mt-100 p-2 w-full">
+        <div class="fixed bottom-0 p-2 w-53">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" onclick="return confirm('Sure to Logout?')"
