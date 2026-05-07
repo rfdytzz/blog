@@ -100,7 +100,7 @@
                     <a href="{{ route('myblog', $user->id) }}">
                         <li
                             class="text-[20px] px-3 py-2 transition duration-200 rounded-md hover:bg-gray-700 {{ request()->routeIs('myblog') ? 'bg-gray-900' : '' }}">
-                            MyBlog</li>
+                            \</li>
                     </a>
                 @endauth
                 <a href="/about">

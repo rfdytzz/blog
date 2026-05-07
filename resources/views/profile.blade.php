@@ -70,6 +70,14 @@
                                         class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
                                 </div>
                             </div>
+
+                            <div class="flex flex-1 flex-col gap-2">
+                                <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Bio Profile</label>
+                                <input type="text" name="bio" id="name" required
+                                    value="{{ $user->bio }}" placeholder="Bio Profile"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-gray-600 placeholder:text-gray-400">
+                            </div>
+
                             <div class="flex gap-5">
                                 <div class="flex flex-1 flex-col gap-2">
                                     <label for="name" class="text-sm font-semibold text-gray-700 ml-1">Phone

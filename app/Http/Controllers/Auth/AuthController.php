@@ -84,6 +84,7 @@ class AuthController extends Controller
         $request->validate([
             'avatar' => 'nullable|mimes:jpg,png,jpeg,webp',
             'name' => 'required',
+            'bio' => 'required',
             'phone_number' => 'required',
             'birthdate' => 'required',
             'gender' => 'required'
@@ -93,6 +94,7 @@ class AuthController extends Controller
 
         $user->update([
             'name' => $request->name,
+            'bio' => $request->bio,
             'phone_number' => $request->phone_number,
             'birthdate' => $request->birthdate,
             'gender' => $request->gender
@@ -107,52 +109,5 @@ class AuthController extends Controller
         }
 
         return back()->with('success', 'Your Account Updated');
-    }
-
-    public function dashboard()
-    {
-        $user = Auth::user();
-        $totalUser = User::count();
-        $totalPost = Post::count();
-        $totalArticle = Post::where('category', 'article')->count();
-        $totalStory = Post::where('category', 'story')->count();
-
-        return view('dashboard', [
-            'user' => $user,
-            'totalArticle' => $totalArticle,
-            'totalStory' => $totalStory,
-            'labels' => ['Total User', 'Total Post', 'Total Article', 'Total Story'],
-            'data' => [$totalUser, $totalPost, $totalArticle, $totalStory]
-        ]);
-    }
-    public function alluser(Request $request)
-    {
-        $user = Auth::user();
-        $query = User::query()->where('role', 'user');
-        $post = Post::with('user')->get();
-
-        $userPerDay = User::where('created_at', '>=', now()->subDays(7))
-                        ->groupBy('date')
-                        ->orderBy('date')
-                        ->get([
-                            DB::raw('DATE(created_at) as date'),
-                            DB::raw('count(*) as total')
-                        ])
-                        ->pluck('total', 'date');
-
-        if ($request->search) {
-            $query->where('name', 'like', '%' . $request . '%')
-                    ->orWhere('email', 'like', '%' . $request->search . '%');
-        }
-
-        $data = $query->latest()->paginate(10);
-
-        return view('alluser', [
-            'user' => $user,
-            'post' => $post,
-            'data' => $data,
-            'labels' => $userPerDay->keys(),
-            'total' => $userPerDay->values(),
-        ]);
     }
 }

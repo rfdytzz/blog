@@ -13,7 +13,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Super Admin (Tetap 1)
         User::create([
             'name' => 'Super Admin',
             'email' => 'admin@mail.com',
@@ -24,7 +23,6 @@ class UserSeeder extends Seeder
             'birthdate' => '2009-12-02'
         ]);
 
-        // 2. Data User yang sudah ada
         $existingUsers = [
             ['name' => 'Rafka Dyta', 'email' => 'rafka@mail.com', 'gender' => 'male'],
             ['name' => 'Elon Musk', 'email' => 'elon@mail.com', 'gender' => 'male'],
@@ -43,7 +41,6 @@ class UserSeeder extends Seeder
             ]);
         }
 
-        // 3. Tambahan 16 User baru (Total jadi 20)
         $additionalUsers = [
             ['John Doe', 'john@mail.com', 'male'],
             ['Jane Smith', 'jane@mail.com', 'female'],

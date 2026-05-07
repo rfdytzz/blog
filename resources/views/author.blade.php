@@ -7,15 +7,20 @@
     <div class="w-full h-fit bg-white shadow items-center flex px-15 justify-between">
         <div class="flex gap-4 items-center py-5">
             <img src="{{ asset('storage/' . $author->avatar) }}" class="size-20 rounded-full" alt="">
-            <h1 class="font-medium text-[36px]">
-                {{ $author->name }}
-            </h1>
+            <div class="flex flex-col">
+                <h1 class="font-medium text-[36px]">
+                    {{ $author->name }}
+                </h1>
+                <p class="-mt-2">{{ $author->bio }}</p>
+            </div>
         </div>
         <div class="flex flex-col gap-2 ">
             <p class="text-end">Share this Profile</p>
             <div class="flex gap-3">
-                <a href="https://whatsapp.com" class="flex items-center gap-2 bg-green-500 text-white p-2 rounded"><i class='bx bxl-whatsapp text-[25px] mt-1'></i> WhatsApp</a>
-                <a href="https://whatsapp.com" class="flex items-center gap-2 bg-blue-500 text-white p-2 rounded"><i class='bx bxl-facebook text-[25px] mt-1'></i> Facebook</a>
+                <a href="https://whatsapp.com" class="flex items-center gap-2 bg-green-500 text-white p-2 rounded"><i
+                        class='bx bxl-whatsapp text-[25px] mt-1'></i> WhatsApp</a>
+                <a href="https://whatsapp.com" class="flex items-center gap-2 bg-blue-500 text-white p-2 rounded"><i
+                        class='bx bxl-facebook text-[25px] mt-1'></i> Facebook</a>
             </div>
         </div>
     </div>

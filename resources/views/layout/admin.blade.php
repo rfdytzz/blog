@@ -23,8 +23,14 @@
                     class="w-full transition duration-200 hover:bg-gray-800 p-3 {{ request()->routeIs('allusers') ? 'bg-gray-800' : '' }}">
                     All User</li>
             </a>
+            <a href="/dashboard/post">
+                <li
+                    class="w-full transition duration-200 hover:bg-gray-800 p-3 {{ request()->routeIs('allpost') ? 'bg-gray-800' : '' }}">
+                    All Post</li>
+            </a>
+
         </ul>
-        <div class="mt-110 p-2 w-full">
+        <div class="mt-100 p-2 w-full">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" onclick="return confirm('Sure to Logout?')"

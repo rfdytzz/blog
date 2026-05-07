@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Models\Post;
 use App\Http\Controllers\ChangeController;
@@ -61,6 +62,7 @@ Route::middleware('auth', 'Check_Role:user')->group(function () {
 });
 
 Route::middleware('auth', 'Check_Role:admin')->group( function() {
-    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-    Route::get('/dashboard/alluser', [AuthController::class, 'alluser'])->name('allusers');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/alluser', [AdminController::class, 'alluser'])->name('allusers');
+    Route::get('/dashboard/post', [AdminController::class, 'allpost'])->name('allpost');
 });

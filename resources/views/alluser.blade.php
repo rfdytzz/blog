@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="flex flex-col">
-        <h2 class="text-gray-900 font-bold text-[30px]">All USers</h2>
+        <h2 class="text-gray-900 font-bold text-[30px]">All User</h2>
         <p>Manage All User</p>
     </div>
 
@@ -98,7 +98,6 @@
         <div class="mt-6">
             {{ $data->links() }}
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
